@@ -1,0 +1,42 @@
+<h1>Template Driven form</h1>
+
+<form #contactForm="ngForm" (submit)="onSubmit(contactForm)">
+
+    <div>
+        First Name :<input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="contact.firstName" required pattern="^[a-zA-Z]+$" maxlength="15">
+        <span *ngIf="firstName.valid && firstName.touched || firstName.dirty">
+            <span  style="color: red;" *ngIf="firstName.errors?.['required']"> Field should not be empty</span>
+            <span style="color: red;" *ngIf="firstName.errors?.['pattern']">Numbers are not allowed</span>
+            <span style="color: red;" *ngIf="firstName.errors?.['maxlength']">Maximum length is 15</span>
+
+        </span>
+    
+    </div>
+    <div>
+        Last Name : <input type="text" name="lastName" [(ngModel)]="contact.lastName">
+    </div>
+    <div>
+        Email : <input type="text" name="email" [(ngModel)]="contact.email">
+    </div>
+    <div>
+        Gender : <input type="radio" value="male" name="gender" [(ngModel)]="contact.gender"> Male
+                 <input type="radio" value="female" name="gender" [(ngModel)]="contact.gender">Female
+    </div>
+    <div>
+        Country : <select name="country" [(ngModel)]="contact.country">
+                    <option>select</option>
+                    <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
+                  </select>
+    </div>
+    <div ngModelGroup="address">
+        City : <input type="text" name="city" [(ngModel)]="contact.address.city"><br>
+        Street : <input type="text" name="street" [(ngModel)]="contact.address.street"><br>
+        Pincode : <input type="text" name="pincode" [(ngModel)]="contact.address.pincode">
+    </div>
+    <div>
+        <button type="submit"  [disabled]="!contactForm.valid">submit</button>
+    </div>
+
+
+
+</form>

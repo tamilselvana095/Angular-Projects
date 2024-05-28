@@ -1,0 +1,43 @@
+<h1>{{title}}</h1>
+<ol type="1">
+  <li *ngFor="let movie of movies;let i=index">{{movie}}={{i}}</li>
+</ol>
+<br><br>
+
+<input type="number" [(ngModel)]="num">
+<div [ngSwitch]="num">
+<div *ngSwitchCase="1">One</div>
+<div *ngSwitchCase="2">Two</div>
+<div *ngSwitchCase="3">Three</div>
+<div *ngSwitchCase="4">Four</div>
+</div><br>
+
+
+<input type="number" [(ngModel)]="mov">
+<div [ngSwitch]="mov">
+<div *ngFor="let movie of movies;let i=index" >
+  <div *ngSwitchCase="i">{{ movie }} </div></div>
+<div *ngSwitchDefault>invalid number</div>
+
+</div>
+
+
+<br>
+
+<input type="checkbox" [(ngModel)]="showme">
+<p *ngIf="showme">checked</p>
+<p *ngIf="!showme">unchecked</p>
+
+<br>
+
+<input type="checkbox" [(ngModel)]="showme">
+<p *ngIf="showme;else elseblock">checked</p>
+<ng-template #elseblock><p>unchecked</p></ng-template>
+
+<br>
+
+<input type="checkbox" [(ngModel)]="enableRed">
+<input type="checkbox" [(ngModel)]="enableBig">
+<p [ngClass]="{'primary':enableRed,
+                'big':enableBig}">Hello world</p>
+

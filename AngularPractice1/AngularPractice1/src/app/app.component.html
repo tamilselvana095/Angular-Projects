@@ -1,0 +1,17 @@
+<h1>{{title}}</h1>
+<p>{{name}}</p>
+<input type="text" [(ngModel)]="name">
+<button type="submit" [disabled]="clickme" (click)="onSubmit()">submit</button>
+<br><br>
+
+
+<button (click)="count()">Count</button>
+<p>Counting of clicks : {{counting}}</p>
+<br><br>
+
+
+<input type="text" (input)="handleInput($event)">
+<h1>Hello Welcome {{value}}</h1>
+<br>
+<input type="text" (input)="value1=$any($event.target).value">
+<h1>{{value1}}</h1>

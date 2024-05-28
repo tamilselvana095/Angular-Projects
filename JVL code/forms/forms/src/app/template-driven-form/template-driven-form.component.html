@@ -1,0 +1,89 @@
+<!-- 
+
+
+
+    <h3>Template Driven Form </h3>
+
+<form #contactform="ngForm" (submit)="onSubmit(contactform)" >
+    <p>
+        <label for="firstName">First Name : </label>
+        <input type="text" id="firstname" #firstname="ngModel" name="firstname"  [(ngModel)]="contact.firstName" required minlength="10" >
+        <br>
+        <span *ngIf="!firstname.valid && firstname.dirty || firstname.touched" >
+           <span style="color: red;" *ngIf="firstname.errors?.['minlength']">
+            FirstName needs 10 charecters
+            </span>
+
+            <span style="color: red;" *ngIf="firstname.errors?.['required']">
+                FirstName required
+                </span>
+            
+        
+        </span>
+
+    </p>
+
+    <p>
+        <label for="lastName">Last Name : </label>
+        <input type="text" id="lastname"  #lastname="ngModel" name="lastname" [(ngModel)]="contact.lastName" maxlength="15" pattern="^[a-zA-Z]+$" required>
+        <br>
+
+        <span *ngIf="!lastname.valid && lastname.dirty || lastname.touched" >
+            <span style="color: red;" *ngIf="lastname.errors?.['maxlength']">Max length is 15</span>
+            <span style="color: red;" *ngIf="lastname.errors?.['pattern']">Only Charecters are allowed</span>
+            <span style="color: red;" *ngIf="lastname.errors?.['required']">Last name is required</span>
+
+        </span>
+    
+    </p>
+
+    <p>
+        <label for="email">Email : </label>
+        <input type="text" id="'email" name="email" [(ngModel)]="contact.email" >
+    </p>
+
+    <p>
+        <label for="gender">Gender : </label>
+        <input type="radio" value="male" id="'gender" name="gender" [(ngModel)]="contact.gender">Male
+        <input type="radio" value="female" id="'gender" name="gender" [(ngModel)]="contact.gender">Female
+    </p>
+
+    <p>
+        <label for="ismarried">Married : </label>
+        <input type="checkbox" id="'ismarried" name="ismarried" [(ngModel)]="contact.isMarried">
+    </p>
+
+    <p>
+        <label for="country">Country : </label>
+        <select name="country" id="country" [(ngModel)]="contact.country">
+            <option  value="">select</option>
+            <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
+        </select>
+    </p>
+    
+    <div ngModelGroup="address">
+
+        <p>
+            <label for="city">city : </label>
+            <input type="text" id="city" name="city" [(ngModel)]="contact.address.city">
+        </p>
+
+        <p>
+            <label for="street">street : </label>
+            <input type="text" id="street" name="street" [(ngModel)]="contact.address.street">
+        </p>
+
+        <p>
+            <label for="pincode">pincode : </label>
+            <input type="text" id="pincode" name="pincode" [(ngModel)]="contact.address.pincode">
+        </p>
+
+    </div>
+    <p>
+        <button type="submit" [disabled]="!contactform.valid">Submit</button>
+    </p>
+    
+</form>
+
+
+ -->

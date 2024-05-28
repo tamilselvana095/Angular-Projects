@@ -1,0 +1,14 @@
+<h4>NgClass</h4>
+<ul *ngFor="let book of books">
+  <li [ngClass]="{
+    'text-success':book.publisher === 'Penguine',
+    'text-primary':book.publisher === 'Garuda',
+    'text-danger':book.publisher === 'Diamond',
+    'text-warning':book.publisher === 'First Print'
+
+  }">
+	{{ book.name }} ({{ book.price }})
+  </li>
+</ul>
+
+<p appHighlight> Highlight me!</p>

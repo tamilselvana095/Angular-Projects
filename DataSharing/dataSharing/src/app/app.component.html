@@ -1,0 +1,22 @@
+
+<form>
+ Car Name :  <input type="text" name="carName" [(ngModel)]="carName">
+  <button (click)="addCar()">Submit</button>
+</form>
+
+<p>Cars List : </p>
+
+
+
+ <div *ngIf="cars.length>0;then thenblock;else elseblock"></div> 
+
+<ng-template #thenblock>
+ <ul>
+  <li *ngFor="let car of cars">{{car}}</li>
+</ul>
+</ng-template>
+<ng-template #elseblock>
+  <p>No Data</p>
+</ng-template>
+
+

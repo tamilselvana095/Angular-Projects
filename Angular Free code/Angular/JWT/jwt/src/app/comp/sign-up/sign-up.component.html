@@ -1,0 +1,40 @@
+
+<body>
+<div class="signup-container">
+    <h2>Create an Account</h2>
+    <form (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name"[(ngModel)]="user.name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.emailId"  required email>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" [(ngModel)]="user.phoneNumber"  required pattern="[0-9]{10}">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password"  required minlength="6">
+      </div>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="gender" value="male" [(ngModel)]="user.gender">
+          <span class="radio-custom"></span>
+          Male
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="gender" value="female" [(ngModel)]="user.gender">
+          <span class="radio-custom"></span>
+          Female
+        </label>
+    </div>
+
+      <button type="submit" >Sign Up</button>
+    </form>
+  </div>
+
+  
+

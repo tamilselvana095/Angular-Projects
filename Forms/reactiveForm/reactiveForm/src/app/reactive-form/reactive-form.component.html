@@ -1,0 +1,39 @@
+
+<h1>Reactive Form</h1>
+
+<form [formGroup]="contactForm" (submit)="onSubmit()">
+    <div>
+      First Name : <input type="text" name="firstName" formControlName="firstName" >
+    </div>
+    <div>
+        Last Name : <input type="text" name="lastName" formControlName="lastName"> 
+        <span *ngIf="firstName?.valid && firstName?.touched || firstName?.dirty">
+        <span style="color: red;" *ngIf="firstName?.errors?.['required']">First Name is required</span>
+        <span style="color: red;" *ngIf="firstName?.errors?.['maxlength']">First name not greater than 15 charecters</span>
+        </span> 
+    </div>
+    <div>
+        Email : <input type="text" name="email" formControlName="email">
+    </div>
+    <div>
+        Gender : <input type="radio" value="male" name="gender" formControlName="gender"> Male
+                 <input type="radio" value="female" name="gender" formControlName="gender">Female
+    </div>
+    <div>
+        Country : <select name="country" formControlName="country">
+                        <option value="1">select</option>
+                        <option value="2">India</option>
+                        <option value="3">USA</option>
+                        <option value="4">UK</option>
+                  </select>
+    </div>
+    <div formGroupName="address">
+        City : <input type="text" name="city" formControlName="city"><br>
+        Street : <input type="text" name="street" formControlName="street"><br>
+        Pincode : <input type="text" name="pincode" formControlName="pincode"><br>
+    </div>
+    <div>
+        <button type="submit" [disabled]="!contactForm.valid">submit</button>
+    </div>
+</form>
+

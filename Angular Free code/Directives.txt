@@ -1,0 +1,140 @@
+
+
+
+DIRECTIVES:
+***************
+
+
+
+---------------------app.comp.html------------------
+<app-rooms></app-rooms>
+<!-- <div [ngSwitch]="role">
+    <div *ngSwitchCase="'User'">Welcome User!</div>
+    <div *ngSwitchCase="'Admin'">
+        <app-rooms></app-rooms>
+    </div>
+    <div *ngSwitchDefault>
+        You are not authorized to view this page!
+    </div>
+</div> -->
+------------------------app.comp.ts---------------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Basic';
+
+  role='Admin';
+}
+-----------------rooms-----------------------------------
+--------------room.comp.ts-----------------------
+import { Component } from '@angular/core';
+import { RoomList, Rooms } from './rooms';
+
+@Component({
+  selector: 'app-rooms',
+  templateUrl: './rooms.component.html',
+  styleUrls: ['./rooms.component.css']
+})
+export class RoomsComponent {
+
+
+  hotelName='Hilton Hotel';
+
+  numberOfRooms=10;
+  hideRooms=false;
+
+  rooms:Rooms={
+    totalRooms:20,
+    availableRooms:10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ,
+    bookedRooms:5
+  }
+
+  roomList:RoomList[]=[
+    {
+    roomNumber:1,
+    roomtype:'Delux Room',
+    amenities:'Air conditioning ,Free wifi ,Tv, Bathroom, Kitchen',
+    price:500,
+    photos:'https://unsplash.com/photos/a-black-and-white-photo-of-a-clock-tower-4sAXp8kJSas',
+    checkintime:new Date('09-April-2024'),
+    checkoutTime:new Date('10-April-2024')
+
+    },
+    {
+      roomNumber:2,
+      roomtype:'Delux Room',
+      amenities:'Air conditioning ,Free wifi ,Tv, Bathroom, Kitchen',
+      price:1000,
+      photos:'https://unsplash.com/photos/a-black-and-white-photo-of-a-clock-tower-4sAXp8kJSas',
+      checkintime:new Date('09-April-2024'),
+      checkoutTime:new Date('10-April-2024')
+  
+      },
+    {
+      roomNumber:3,
+      roomtype:'private suite',
+      amenities:'Air conditioning ,Free wifi ,Tv, Bathroom, Kitchen',
+      price:15000,
+      photos:'https://unsplash.com/photos/a-black-and-white-photo-of-a-clock-tower-4sAXp8kJSas',
+      checkintime:new Date('09-April-2024'),
+      checkoutTime:new Date('10-April-2024')
+  
+      }
+];
+
+  toggle() {
+    this.hideRooms=!this.hideRooms
+    }
+
+}
+-------------------------------room.comp.html----------------------------------
+<h1>Welcome to {{ hotelName}}</h1>
+
+<div [hidden]="hideRooms">
+    Number of Rooms :
+    <div *ngIf="rooms.availableRooms>0"
+        [ngStyle]="{'color':rooms.availableRooms?'green':'red'}"
+        [innerText]="numberOfRooms"></div>
+</div>
+
+<div *ngIf="rooms.availableRooms>0">
+    Rooms List :
+    <!-- {{roomList}} -->
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>odd/even</th>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Room Price</th>
+            <th>Amenities</th>
+            <th>Checkin Time</th>
+        </tr>
+        <tr [ngClass]="e?'even':'odd'"  *ngFor="let room of roomList; let e=even; let o=odd;let i=index" >
+            <td>{{i+1}}</td>
+            <td>{{e?"Even":"Odd"}}</td>
+            <td>{{ room.roomNumber }}</td>
+            <td>{{ room.roomtype }}</td>
+            <td>{{ room.price }}</td>
+            <td>{{ room.amenities }}</td>
+            <td>{{ room.checkintime }}</td>
+        </tr>
+    </table>
+</div>
+
+<button (click)="toggle()">Toggle</button>
+--------------------------------room.comp.css-------------------
+.even{
+    background-color: steelblue;
+    color: white;
+}
+.odd{
+    background-color: rgb(255, 22, 6);
+    color: white;
+}
+-----------------------------------------------------------

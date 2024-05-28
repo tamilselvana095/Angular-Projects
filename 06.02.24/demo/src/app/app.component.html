@@ -1,0 +1,24 @@
+
+
+
+<p>{{ title }}
+
+</p>
+
+
+<p><button class="btn btn-primary"
+  [disabled]="clickme">Property Binding</button>
+</p>
+
+
+<p> <button class="btn btn-primary"
+  [disabled]="clickme"
+  (click)="changeTitle()">Property Binding</button>
+</p>
+
+
+
+<input type = "text" [(ngModel)] = "name">
+
+	{{ name }}<br><br>
+  <app-heroes></app-heroes>

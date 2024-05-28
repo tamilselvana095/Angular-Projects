@@ -1,0 +1,27 @@
+<p>hello-world works!</p>
+
+<p>{{title}}</p>
+
+<h1>{{'hello '+name}}</h1>
+
+<h1 [innerText]="name"></h1>
+
+
+<input type="text" [(ngModel)]="name">
+
+{{40*50}}
+
+
+<button [disabled]="isDisable">clickme</button>
+
+<p>You have clicked : {{Count}}</p>
+<button (click)="clickme()">clickme</button><br>
+
+<input type="text" (input)="handleInput($event);value2=$any($event.target).value">
+{{value}}
+<p>{{value2}}</p>
+
+<h1>{{movieTitle}}</h1>
+<ul>
+    <li *ngFor="let movie of movies">{{movie}}</li>
+</ul>

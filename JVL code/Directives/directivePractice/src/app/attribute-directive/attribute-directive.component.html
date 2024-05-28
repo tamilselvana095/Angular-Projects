@@ -1,0 +1,16 @@
+<p [ngClass]="['primary']">attribute-directive works!</p>
+<p [ngClass]="{'big':true}">attribute-directive works!</p>
+<!-- 
+<input type="checkbox" [(ngModel)]="enableRed">
+<input type="checkbox" [(ngModel)]="enableBold">
+<input type="checkbox" [(ngModel)]="enableItalic">
+<h1 [ngClass]="{
+    'primary':enableRed,
+    'big':enableBold,
+    'italic':enableItalic}">Hello</h1> -->
+
+    <div [ngStyle]="{'color':status=='error'?'red':'blue'}">Hello</div>
+
+    Color : <input type="text" [(ngModel)]="color">
+    <h1 [ngStyle]="{'color':color}">Hello</h1>
+    <h1 [ngStyle]="{'backgroundColor':color}">Hello</h1>

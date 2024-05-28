@@ -1,0 +1,19 @@
+
+<div style="text-align: center;">
+<h3>Username and Password</h3>
+
+
+<div *ngIf="userData.length>0;then thenblock else elseblock"></div>
+<ng-template #thenblock>
+<ul *ngFor="let users of userData" style="align-content: center;">
+    <li  >
+      {{users.username}}----------------> {{users.password}}
+    </li>
+</ul>
+</ng-template>
+
+<ng-template #elseblock>
+    <p style="color: red;">No data present</p>
+</ng-template>
+
+</div>
